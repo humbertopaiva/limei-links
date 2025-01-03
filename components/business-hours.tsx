@@ -50,7 +50,18 @@ export function BusinessHours({ profile }: BusinessHoursProps) {
       close: profile.fechamento_sabado,
       isOpen: profile.dias_funcionamento.includes("sabado"),
     },
+    {
+      day: "Domingo",
+      open: profile.abertura_domingo,
+      close: profile.fechamento_domingo,
+      isOpen: profile.dias_funcionamento.includes("domingo"),
+    },
   ];
+
+  const formatTime = (time: string | null) => {
+    if (!time) return "";
+    return time.slice(0, 5);
+  };
 
   return (
     <Table>
@@ -65,8 +76,8 @@ export function BusinessHours({ profile }: BusinessHoursProps) {
           <TableRow key={item.day}>
             <TableCell>{item.day}</TableCell>
             <TableCell>
-              {item.isOpen
-                ? `${item.open.slice(0, 5)} - ${item.close.slice(0, 5)}`
+              {item.isOpen && item.open && item.close
+                ? `${formatTime(item.open)} - ${formatTime(item.close)}`
                 : "Fechado"}
             </TableCell>
           </TableRow>

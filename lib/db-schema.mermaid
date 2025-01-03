@@ -1,0 +1,137 @@
+erDiagram
+    empresas {
+        uuid id PK
+        string status
+        string nome
+        uuid categoria FK
+        uuid usuario FK
+        uuid plano FK
+        boolean tem_delivery
+    }
+    
+    categorias_empresas {
+        uuid id PK
+        string nome
+        string slug
+        uuid imagem FK
+    }
+
+    produtos {
+        uuid id PK
+        string status
+        string nome
+        text descricao
+        string preco
+        string preco_promocional
+        integer estoque
+        string video
+        integer categoria FK
+        uuid empresa FK
+        boolean promocao
+        string imagem
+    }
+
+    categorias_produto {
+        integer id PK
+        string nome
+        string imagem
+    }
+
+    cartao_fidelidade {
+        uuid id PK
+        string status
+        string titulo
+        text descricao
+        integer quantidade_selos
+        uuid empresa FK
+        date validade
+        boolean validade_indeterminada
+        string valor_compras
+        date ultima_atualizacao
+        integer selos
+    }
+
+    usuario_cartao {
+        uuid id PK
+        string status
+        string nome
+        string whatsapp
+        integer selos
+        uuid cartao FK
+        date ultimo_selo
+        date ultimo_resgate
+        text observacoes
+    }
+
+    cupons {
+        uuid id PK
+        string status
+        uuid empresa FK
+        uuid produto FK
+        string titulo
+        text descricao
+        date validade
+        text restricoes
+        string tipo_desconto
+        integer quantidade
+        float desconto
+    }
+
+    configuracoes_delivery {
+        uuid id PK
+        decimal pedido_minimo
+        decimal taxa_entrega
+        integer tempo_estimado_entrega
+        boolean especificar_bairros_atendidos
+        json bairros_atendidos
+        text observacoes
+        uuid empresa FK
+    }
+
+    vitrine {
+        uuid id PK
+        string status
+        uuid empresa FK
+    }
+
+    encartes {
+        uuid id PK
+        string status
+        uuid empresa FK
+        string nome
+        date validade
+        text descricao
+        uuid imagem_01 FK
+        uuid imagem_02 FK
+        uuid imagem_03 FK
+        uuid imagem_04 FK
+        uuid imagem_05 FK
+        uuid imagem_06 FK
+        uuid imagem_07 FK
+        uuid imagem_08 FK
+        uuid imagem_09 FK
+        uuid imagem_10 FK
+    }
+
+    planos {
+        uuid id PK
+        string status
+        string nome
+        string quantidade_produtos
+        string quantidade_cupons
+        string quantidade_encartes
+        boolean tem_galeria
+        boolean tem_links
+    }
+
+    empresas ||--o{ produtos : "possui"
+    empresas ||--o{ cartao_fidelidade : "possui"
+    empresas ||--o{ cupons : "possui"
+    empresas ||--o{ vitrine : "possui"
+    empresas ||--o{ encartes : "possui"
+    empresas ||--|| configuracoes_delivery : "possui"
+    empresas }|--|| categorias_empresas : "pertence"
+    empresas }|--|| planos : "possui"
+    produtos }|--|| categorias_produto : "pertence"
+    cartao_fidelidade ||--o{ usuario_cartao : "possui"
+    produtos ||--o{ cupons : "possui"
