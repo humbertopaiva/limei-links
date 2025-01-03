@@ -1,8 +1,8 @@
-import { z } from 'zod';
-import { API_TOKEN, API_BASE_URL } from './constants';
+import { z } from "zod";
+import { API_BASE_URL } from "./constants";
 
 const headers = {
-  Authorization: `Bearer ${API_TOKEN}`,
+  Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
 };
 
 const ProductSchema = z.object({
