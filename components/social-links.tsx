@@ -1,16 +1,8 @@
 "use client";
 
 import { Profile } from "@/lib/api";
-import { Button } from "@/components/ui/button";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-  // Remove TiktokIcon import as it doesn't exist in lucide-react
-} from "lucide-react";
+import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
-// Create a custom TikTok icon component
 function TikTokIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
@@ -65,20 +57,31 @@ export function SocialLinks({ profile, className }: SocialLinksProps) {
   ].filter((social) => social.show);
 
   return (
-    <div className={`flex gap-2 ${className}`}>
-      {socials.map((social) => (
-        <Button
-          key={social.url}
-          variant="ghost"
-          size="icon"
-          asChild
-          className="hover:scale-110 transition-transform"
-        >
-          <a href={social.url} target="_blank" rel="noopener noreferrer">
-            <social.icon className="h-5 w-5" />
+    <div className={`flex gap-3 ${className}`}>
+      {socials.map((social) => {
+        const Icon = social.icon;
+        const iconStyle = { color: profile.cor_primaria };
+
+        return (
+          <a
+            key={social.url}
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white/95 shadow-sm transition-all duration-300 hover:scale-110 hover:shadow-md"
+            style={
+              {
+                "--hover-color": profile.cor_primaria,
+              } as React.CSSProperties
+            }
+          >
+            <Icon
+              className="h-5 w-5 transition-colors duration-200"
+              style={iconStyle}
+            />
           </a>
-        </Button>
-      ))}
+        );
+      })}
     </div>
   );
 }

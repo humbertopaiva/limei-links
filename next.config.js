@@ -1,8 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { 
+  images: {
     unoptimized: true,
-    domains: ['ywxeaxheqzpogiztqvzk.supabase.co']
+    domains: ["ywxeaxheqzpogiztqvzk.supabase.co"],
+  },
+  headers: async () => {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "no-store, max-age=0",
+          },
+        ],
+      },
+    ];
   },
 };
 
