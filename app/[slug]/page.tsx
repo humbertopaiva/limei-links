@@ -32,7 +32,7 @@ export default async function CompanyPage({
           background: bgStyle,
         }}
       >
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-4 py-4 md:py-8">
           <div className="space-y-8">
             {/* Banner Section */}
             <div className="relative w-full h-[200px] rounded-xl">

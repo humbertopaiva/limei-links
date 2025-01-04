@@ -112,8 +112,8 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
 
   return (
     <Card className="divide-y divide-border">
-      <CardHeader className="flex flex-row items-center justify-between px-8">
-        <CardTitle className="text-xl font-bold flex items-center">
+      <CardHeader className="flex flex-row items-center justify-between px-4 sm:px-8">
+        <CardTitle className="text-lg sm:text-xl font-bold flex items-center">
           Informações
         </CardTitle>
       </CardHeader>
@@ -121,14 +121,16 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="w-full flex items-center justify-between px-8 py-8 hover:bg-transparent group"
+            className="w-full flex items-center justify-between px-4 sm:px-8 py-4 sm:py-8 hover:bg-transparent group"
           >
-            <div className="flex items-center gap-4">
-              <MapPin className="w-6 h-6" style={iconStyle} />
-              <span className="text-xl font-medium">Localização</span>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <MapPin className="w-5 h-5 sm:w-6 sm:h-6" style={iconStyle} />
+              <span className="text-sm sm:text-base lg:text-xl font-medium">
+                Localização
+              </span>
             </div>
             <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 group-hover:text-foreground ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:text-foreground ${
                 isLocationOpen ? "rotate-180" : ""
               }`}
               style={iconStyle}
@@ -136,15 +138,15 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <CardContent className="pt-2 px-8 py-8">
-            <div className="flex justify-between items-center gap-4">
-              <p className="text-base text-muted-foreground">
+          <CardContent className="pt-2 px-4 sm:px-8 py-8 sm:py-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <p className="text-sm sm:text-base text-muted-foreground">
                 {profile.endereco}
               </p>
               <Button
                 variant="outline"
                 onClick={openMaps}
-                className="shrink-0"
+                className="w-full sm:w-auto shrink-0"
                 style={{
                   borderColor: profile.cor_primaria,
                   color: profile.cor_primaria,
@@ -162,11 +164,11 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="w-full flex items-center justify-between px-8 py-8 hover:bg-transparent group"
+            className="w-full flex items-center justify-between px-4 sm:px-8 py-8 sm:py-8 hover:bg-transparent group"
           >
-            <div className="flex items-center gap-4">
-              <Clock className="w-6 h-6" style={iconStyle} />
-              <span className="text-xl font-medium">
+            <div className="flex items-center gap-2 sm:gap-4">
+              <Clock className="w-5 h-5 sm:w-6 sm:h-6" style={iconStyle} />
+              <span className="text-sm sm:text-base lg:text-xl font-medium whitespace-normal sm:text-left">
                 Horários de Funcionamento
               </span>
               <Badge
@@ -176,13 +178,13 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
                   borderColor: profile.cor_primaria,
                   color: isOpen ? "white" : profile.cor_primaria,
                 }}
-                className="ml-2 text-sm px-3 py-1"
+                className="ml-1 sm:ml-2 text-[10px] sm:text-xs lg:text-sm px-1.5 sm:px-2 lg:px-3 py-0.5"
               >
                 {isOpen ? "Aberto" : "Fechado"}
               </Badge>
             </div>
             <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 group-hover:text-foreground ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:text-foreground ${
                 isHoursOpen ? "rotate-180" : ""
               }`}
               style={iconStyle}
@@ -190,8 +192,8 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <CardContent className="pt-2 px-8 pb-6">
-            <div className="space-y-4">
+          <CardContent className="pt-2 px-4 sm:px-8 pb-6">
+            <div className="space-y-3 sm:space-y-4">
               {schedule.map((item) => {
                 const isToday =
                   new Date()
@@ -200,7 +202,7 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
                 return (
                   <div
                     key={item.day}
-                    className="flex justify-between items-center py-2 text-base"
+                    className="flex justify-between items-center py-1 sm:py-2 text-sm sm:text-base"
                   >
                     <span className="flex items-center gap-2">
                       {item.day}
@@ -239,14 +241,16 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="w-full flex items-center justify-between px-8 py-8 hover:bg-transparent group"
+            className="w-full flex items-center justify-between px-4 sm:px-8 py-8 sm:py-8 hover:bg-transparent group"
           >
-            <div className="flex items-center gap-4">
-              <CreditCard className="w-6 h-6" style={iconStyle} />
-              <span className="text-xl font-medium">Formas de Pagamento</span>
+            <div className="flex items-center gap-2 sm:gap-4">
+              <CreditCard className="w-5 h-5 sm:w-6 sm:h-6" style={iconStyle} />
+              <span className="text-sm sm:text-base lg:text-xl font-medium">
+                Formas de Pagamento
+              </span>
             </div>
             <ChevronDown
-              className={`w-5 h-5 transition-transform duration-200 group-hover:text-foreground ${
+              className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:text-foreground ${
                 isPaymentOpen ? "rotate-180" : ""
               }`}
               style={iconStyle}
@@ -254,7 +258,7 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <CardContent className="pt-2 px-8 pb-6">
+          <CardContent className="pt-2 px-4 sm:px-8 pb-6">
             <div className="flex flex-wrap gap-2">
               {profile.opcoes_pagamento.map((option) => (
                 <Badge
@@ -264,7 +268,7 @@ export function CompanyInfo({ profile }: CompanyInfoProps) {
                     borderColor: profile.cor_primaria,
                     color: profile.cor_primaria,
                   }}
-                  className="text-base px-4 py-1.5 capitalize"
+                  className="text-xs sm:text-sm lg:text-base px-2 sm:px-3 lg:px-4 py-0.5 sm:py-1 lg:py-1.5 capitalize"
                 >
                   {option}
                 </Badge>

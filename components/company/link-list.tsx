@@ -113,12 +113,12 @@ export function LinkList({ links }: LinkListProps) {
 
   return (
     <Card className="bg-white/95 backdrop-blur-sm shadow-xl">
-      <CardHeader className="flex flex-row items-center justify-between px-8">
-        <CardTitle className="text-xl font-bold flex items-center">
+      <CardHeader className="flex flex-row items-center justify-between px-4 sm:px-8">
+        <CardTitle className="text-lg sm:text-xl font-bold flex items-center">
           Links
         </CardTitle>
       </CardHeader>
-      <CardContent className="px-8 space-y-4">
+      <CardContent className="px-4 sm:px-8 space-y-3 sm:space-y-4">
         {links
           .sort((a, b) => a.ordem - b.ordem)
           .map((link) => {
@@ -131,9 +131,9 @@ export function LinkList({ links }: LinkListProps) {
                 key={link.url}
                 variant="outline"
                 className={cn(
-                  "w-full text-lg py-6 border-2",
+                  "w-full text-sm sm:text-base lg:text-lg py-4 sm:py-6 border-2",
                   "transition-all duration-300 ease-out",
-                  "flex items-center justify-center gap-3",
+                  "flex items-center justify-center gap-2 sm:gap-3",
                   "hover:scale-102",
                   style.className
                 )}
@@ -143,10 +143,10 @@ export function LinkList({ links }: LinkListProps) {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3"
+                  className="flex items-center gap-2 sm:gap-3"
                 >
                   <Icon />
-                  <span>{link.texto}</span>
+                  <span className="font-medium">{link.texto}</span>
                 </a>
               </Button>
             );
